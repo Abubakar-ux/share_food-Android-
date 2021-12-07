@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3FAFAFA"
+    tools:context=".CreateProfile"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CREATE PROFILE"
+        android:layout_marginTop="45dp"
+        android:layout_marginStart="125dp"
+        android:textSize="20dp"
+        android:textColor="@color/darkyellow"
+        android:fontFamily="sans-serif-medium"
+        android:id="@+id/CreateProfile"
+        />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/CreateProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_outline_camera_alt_24"
+
+        app:civ_border_color="@color/darkyellow" />
+
+    <EditText
+        android:id="@+id/FirstName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@id/dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="#8C8A8A8A"
+        android:background="@drawable/credentialsboxbg"
+        android:padding="10dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:textColorHint="#CC8A8A8A" />
+
+    <EditText
+        android:id="@+id/LastName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/FirstName"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:padding="10dp"
+        android:layout_marginTop="65dp"
+        android:backgroundTint="#8C8A8A8A"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:textColorHint="#CC8A8A8A" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/LastName"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:padding="10dp"
+        android:layout_marginTop="65dp"
+        android:backgroundTint="#8C8A8A8A"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
+        android:textColorHint="#CC8A8A8A" />
+
+    <EditText
+        android:id="@+id/phoneNo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/address"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:padding="10dp"
+        android:layout_marginTop="65dp"
+        android:backgroundTint="#8C8A8A8A"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:textColorHint="#CC8A8A8A" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/phoneNo"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:padding="10dp"
+        android:layout_marginTop="65dp"
+        android:backgroundTint="#8C8A8A8A"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="text"
+        android:textColorHint="#CC8A8A8A" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/button"
+        android:layout_alignTop="@+id/city"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Create"
+        android:textSize="20sp" />
+
+</RelativeLayout>

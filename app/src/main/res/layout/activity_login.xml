@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3FAFAFA"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back"
+        android:textSize="30sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/avenirblack"
+        android:textColor="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/welcomeText"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/button2"
+        android:text="Login with Google" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/or"
+        android:layout_below="@id/loginGoogle"
+        android:layout_centerHorizontal="true"
+        android:text="OR"
+        android:fontFamily="@font/avenirblack"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/avenirblack"
+        android:textSize="15sp"
+        android:text="Email"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/or"
+        android:id="@+id/EmailText"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/EmailText"
+        android:layout_marginStart="20dp"
+        android:hint="example@google.com"
+        android:padding="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/avenirblack"
+        android:textSize="15sp"
+        android:text="Password"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/editTextTextEmailAddress"
+        android:id="@+id/PasswordText"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/PasswordText"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/credentialsboxbg"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <ImageButton
+        android:id="@+id/showPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/editTextTextPassword"
+        android:layout_alignEnd="@id/editTextTextPassword"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#00000000"
+        android:src="@drawable/ic_twotone_remove_red_eye_24" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/CustomLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/editTextTextPassword"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/button"
+        android:text="Login" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/forgotPass"
+        android:text="Forgot Password?"
+        android:fontFamily="@font/avenirblack"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUp"
+        android:text="Sign up"
+        android:fontFamily="@font/avenirblack"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        />
+
+
+</RelativeLayout>

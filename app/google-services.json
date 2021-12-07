@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794587877390",
+    "project_id": "sharefood-5f739",
+    "storage_bucket": "sharefood-5f739.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794587877390:android:0ade765a7f4d538dda6c5f",
+        "android_client_info": {
+          "package_name": "com.abubakar.foodshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794587877390-3s6teuopka75qd0vg0atnqan4f47i10k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWFScsgs71n0C4GogFcP6tp-UB5NlGBfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794587877390-3s6teuopka75qd0vg0atnqan4f47i10k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

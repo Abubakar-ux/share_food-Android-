@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/login"
+    tools:context=".Welcome">
+
+    <TextView
+        android:id="@+id/food_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:paddingVertical="100dp"
+        android:inputType="textPersonName"
+        android:textSize="45sp"
+        android:text="FOOD SHARE"
+        android:background="@null"
+        tools:ignore="HardcodedText,LabelFor"
+        android:autofillHints="foodshare android app" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:background="@null"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:lineSpacingExtra="@dimen/activity_horizontal_margin"
+        android:textStyle="italic"
+        android:singleLine = "false"
+        android:textSize="20sp"
+        android:text="Help us fight the hunger and donate leftover foods"
+        tools:ignore="HardcodedText,LabelFor,TextFields"
+        android:paddingVertical="70dp"
+        android:autofillHints="description" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:padding="20dp"
+        app:rippleColor="@color/olive_transparent"
+        android:backgroundTint="@color/olive_transparent"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create your account"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:paddingEnd="40dp"
+        android:paddingLeft="50dp"
+        android:background="#07000000"
+        tools:ignore="HardcodedText,RtlSymmetry" />
+
+</LinearLayout>
