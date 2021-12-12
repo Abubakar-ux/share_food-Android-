@@ -42,16 +42,15 @@
         android:paddingVertical="70dp"
         android:autofillHints="description" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:text="SIGN IN"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:padding="20dp"
-        app:rippleColor="@color/olive_transparent"
-        android:backgroundTint="@color/olive_transparent"
+        android:background="@drawable/button"
         tools:ignore="HardcodedText" />
 
     <Button

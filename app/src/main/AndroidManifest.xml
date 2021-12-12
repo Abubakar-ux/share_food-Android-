@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Share_food">
         <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".CreateProfile"
             android:exported="false" />
         <activity
