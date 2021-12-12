@@ -2,6 +2,7 @@ package com.abubakar.share_food;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -34,6 +36,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +54,11 @@ public class Home extends AppCompatActivity {
     SearchView filter;
     FloatingActionButton donate;
     ArrayList<Food> foodList = new ArrayList<>();
+    ImageView profile;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +80,10 @@ public class Home extends AppCompatActivity {
 
         View headerView = navigationView.getHeaderView(0);
         TextView textViewToChange = headerView.findViewById(R.id.username);
+        profile = headerView.findViewById(R.id.imageView);
+        preferences = getSharedPreferences("UserData", MODE_PRIVATE);
+
+
         textViewToChange.setText(user_email);
 
         //ImageView imageViewToChange=headerView.findViewById(R.id.imageView);
@@ -86,8 +100,11 @@ public class Home extends AppCompatActivity {
         showList();
     }
 
-    // custom adapter for a food list
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Picasso.get().load(preferences.getString("img", "yolo")).into(profile);
+    }
 
     public void showList() {
         ListView listView;
@@ -140,7 +157,7 @@ public class Home extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Home.this, Home.class);
+                Intent intent = new Intent(Home.this, AcceptFood.class);
                 Food selectedFood = (Food) listView.getAdapter().getItem(position);
                 intent.putExtra("FOODNAME", selectedFood.getName());
                 intent.putExtra("AMOUNT", selectedFood.getAmount());
@@ -160,7 +177,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 if (click) {
                     Toast.makeText(Home.this, "Hello?", Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(Home.this, Donation.class));
+                    startActivity(new Intent(Home.this, Donate.class));
                     click = false;
                 } else {
                     click = true;
@@ -187,7 +204,7 @@ public class Home extends AppCompatActivity {
                             startActivity(new Intent(Home.this, Home.class));
                             break;
                         case R.id.nav_profile:
-                            //startActivity(new Intent(Home.this, ProfileActivity.class));
+                            startActivity(new Intent(Home.this, Profile.class));
                             break;
                         case R.id.nav_qrcode:
                             //startActivity(new Intent(Home.this, createQRcode.class));

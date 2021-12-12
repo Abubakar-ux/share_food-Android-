@@ -4,9 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +32,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Login extends AppCompatActivity {
     AppCompatButton button;
@@ -34,7 +51,10 @@ public class Login extends AppCompatActivity {
     EditText eMail;
     EditText pass;
     ImageButton showPass;
+    FirebaseDatabase database;
+    DatabaseReference reference;
     GoogleSignInClient mGoogleSignInClient;
+    Context context;
     int showPassFlag = 0;
     int RC_SIGN_IN = 111;
     Button loginGoogle;
@@ -51,6 +71,8 @@ public class Login extends AppCompatActivity {
         pass = findViewById(R.id.editTextTextPassword);
         showPass = findViewById(R.id.showPass);
         loginGoogle = findViewById(R.id.loginGoogle);
+        context = this;
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("794587877390-3s6teuopka75qd0vg0atnqan4f47i10k.apps.googleusercontent.com")
@@ -92,6 +114,7 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            storeImage();
 
                             Intent toHome=new Intent(Login.this,Home.class);
                             startActivity(toHome);
@@ -105,6 +128,36 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+
+
+    void storeImage(){
+        database = FirebaseDatabase.getInstance();
+
+
+        reference=database.getReference("Users");
+        Query getImg = reference.orderByChild("email").equalTo(mAuth.getCurrentUser().getEmail());
+        getImg.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot appleSnapshot: snapshot.getChildren()) {
+                    User user = appleSnapshot.getValue(User.class);
+                    SharedPreferences.Editor editor = getSharedPreferences("UserData", MODE_PRIVATE).edit();
+                    editor.putString("img", user.dp);
+                    editor.apply();
+                }
+                if(snapshot.exists()){
+                    System.out.println("exist works");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
@@ -150,6 +203,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void toHomeScreen(){
+        storeImage();
         Intent toHome=new Intent(Login.this,Home.class);
         startActivity(toHome);
         finish();

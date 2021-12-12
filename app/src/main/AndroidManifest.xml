@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Share_food">
         <activity
+            android:name=".ConfirmFood"
+            android:exported="false" />
+        <activity
+            android:name=".AcceptFood"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Donate"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

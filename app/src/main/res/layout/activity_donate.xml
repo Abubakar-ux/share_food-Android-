@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:fitsSystemWindows="true"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.Share_food"
+        android:textAlignment="center"
+        android:gravity="center|top">
+    </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="?attr/actionBarSize"
+            android:orientation="vertical"
+            tools:ignore="ExtraText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/donation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Donation"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/electric_brown"
+                    android:paddingTop="30dp"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Do you want to donate item?"
+                    android:textSize="17sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="40dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/donate_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:hint="Food Name" />
+
+                    <EditText
+                        android:id="@+id/donate_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:hint="Location" />
+
+                    <EditText
+                        android:id="@+id/donate_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:hint="Amount" />
+
+                    <EditText
+                        android:id="@+id/donate_expire"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:hint="Expired date" />
+                    />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/donate_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:background="@drawable/button_login"
+                    android:backgroundTint="@color/old_gold"
+                    android:text="yes, I donate"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" />
+                <Button
+                    android:id="@+id/donate_cancel_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:background="@drawable/button_login"
+                    android:backgroundTint="@color/electric_brown"
+                    android:text="cancel"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+</LinearLayout>

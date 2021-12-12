@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:fitsSystemWindows="true"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.Share_food"
+        android:textAlignment="center"
+        android:gravity="center|top">
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/confirmation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Successful!"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@color/electric_brown"
+                android:paddingTop="80dp"
+                />
+
+            <ImageView
+                android:src="@drawable/confirm_foreground"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:contentDescription="check" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanks for using our app. \n We hope you have a wonderful day!"
+                android:textSize="19sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:paddingTop="30dp"
+                android:paddingBottom="40dp" />
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button_login"
+                android:backgroundTint="@color/old_gold"
+                android:text="Back to Main Page"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
