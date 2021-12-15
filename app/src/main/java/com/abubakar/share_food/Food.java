@@ -10,48 +10,31 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Food {
+    private String id;
     private String name;
     private String amount;
     private String donor;
     private String recipient;
     private String expiryDate;
-    private String fridge;
+    private String location;
+    private String img;
 
-    public Food (String name, String amount, String donor, String recipient,
-                 String expiryDate, String fridge) {
+    public Food (String id, String name, String amount, String donor, String recipient,
+                 String expiryDate, String location, String img) {
+        this.id = id;
         this.name = name;
         this.amount = amount;
         this.donor = donor;
         this.recipient = recipient;
         this.expiryDate = expiryDate;
-        this.fridge = fridge;
+        this.location = location;
+        this.img = img;
     }
 
     public Food () {
     }
 
-    public String getID() {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Food");
-        String foodname = this.name;
-        String location = this.fridge;
-        final String[] id = new String[1];
-
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot item : snapshot.getChildren()) {
-                    if (item.child("name").equals(foodname) && item.child("name").equals(location))
-                        id[0] = item.getKey();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return id[0];
-    }
+    public String getId() { return this.id; }
 
     public String getName() {
         return this.name;
@@ -74,7 +57,8 @@ public class Food {
     }
 
     public String getFridge() {
-        return this.fridge;
+        return this.location;
     }
 
+    public String getImg() { return this.img; }
 }

@@ -27,7 +27,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +47,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +68,6 @@ public class Home extends AppCompatActivity {
     ArrayList<Food> foodList = new ArrayList<>();
     ImageView profile;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    FirebaseDatabase database;
-    DatabaseReference reference;
     SharedPreferences preferences;
 
     @Override
@@ -68,7 +78,8 @@ public class Home extends AppCompatActivity {
         // fragment title tool bar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Welcome to UNICHEF");
+        toolbar.setTitle("Welcome to foodshare");
+        Id.setIp("http://192.168.1.13/foodshare/");
 
         // side bar
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -125,33 +136,43 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        // convert firebase data -> Food class and then store in the global arraylist
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Food");
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        String url=Id.getIp()+"getFood.php";
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String s) {
-                Food value = snapshot.getValue(Food.class);
-                // only if not taken, add to the list
-                if (value.getRecipient().equals("none")) {
-                    foodList.add(value);
-                    adapter.notifyDataSetChanged();
+            public void onResponse(String response) {
+                try {
+                    JSONArray arr = new JSONArray(response);
+                    for(int i=0;i<arr.length();i++) {
+                        JSONObject object1=arr.getJSONObject(i);
+                        String id=object1.get("id").toString();
+                        String name=object1.get("name").toString();
+                        String amount=object1.get("amount").toString();
+                        String donor=object1.get("donor").toString();
+                        String recipient=object1.get("recipient").toString();
+                        String expiry=object1.get("expiry").toString();
+                        String location=object1.get("location").toString();
+                        String img=object1.get("img").toString();
+
+                        foodList.add(new Food(id,name,amount,donor,recipient,expiry,location,img));
+                    }
+                    listView.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
+        }, new Response.ErrorListener() {
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String s) {
-                adapter.notifyDataSetChanged();
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Home.this,"Error in c=vollleyy",Toast.LENGTH_SHORT).show();
             }
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                adapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String s) {
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
+
         });
+
+        RequestQueue queue= Volley.newRequestQueue(Home.this);
+        queue.add(stringRequest);
+
 
         // Food take out
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -162,8 +183,10 @@ public class Home extends AppCompatActivity {
                 intent.putExtra("FOODNAME", selectedFood.getName());
                 intent.putExtra("AMOUNT", selectedFood.getAmount());
                 intent.putExtra("LOCATION", selectedFood.getFridge());
+                intent.putExtra("DONOR", selectedFood.getDonor());
                 intent.putExtra("EXPIRYDATE", selectedFood.getExpiryDate());
-                intent.putExtra("FOODID", selectedFood.getID());
+                intent.putExtra("FOODID", selectedFood.getId());
+                intent.putExtra("FOODIMG", selectedFood.getImg());
                 startActivity(intent);
             }
         });
@@ -176,7 +199,6 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (click) {
-                    Toast.makeText(Home.this, "Hello?", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Home.this, Donate.class));
                     click = false;
                 } else {

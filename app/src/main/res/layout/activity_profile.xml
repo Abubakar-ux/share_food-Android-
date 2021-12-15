@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDFCFC"
-    tools:context=".ProfileActivity">
+    tools:context=".Profile">
 
 
     <View
@@ -90,7 +90,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toEndOf="@+id/email_imageview"
-            app:layout_constraintTop_toBottomOf="@+id/name_textview" />
+            app:layout_constraintTop_toBottomOf="@+id/name_textview"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
 
@@ -130,7 +132,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toEndOf="@+id/account_imageview"
-            app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+            app:layout_constraintTop_toBottomOf="@+id/email_textview"
+            android:textColor="@color/black"
+            />
 
 
     </LinearLayout>
