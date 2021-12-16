@@ -75,7 +75,7 @@ public class FoodAdapter extends ArrayAdapter<Food> implements Filterable {
             if (constraint != null && constraint.length() > 0) {
                 ArrayList<Food> filterList = new ArrayList<Food>();
                 for (int i = 0; i < mStringFilterList.size(); i++) {
-                    if ((mStringFilterList.get(i).getFridge().toUpperCase())
+                    if ((mStringFilterList.get(i).getName().toUpperCase())
                             .contains(constraint.toString().toUpperCase())) {
 
                         Food food = new Food(mStringFilterList.get(i).getId(),mStringFilterList.get(i).getName(), mStringFilterList.get(i).getAmount(),
