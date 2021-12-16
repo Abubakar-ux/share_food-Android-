@@ -11,13 +11,25 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome Back"
+        android:text="Welcome to "
         android:textSize="30sp"
         android:layout_marginStart="20sp"
         android:layout_marginTop="180dp"
         android:fontFamily="@font/avenirblack"
         android:textColor="@color/black"
         />
+
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:layout_toRightOf="@id/welcomeText"
+        android:fontFamily="@font/avenirblack"
+        android:text="Food Share"
+        android:textColor="@color/darkyellow"
+        android:textSize="25sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginGoogle"

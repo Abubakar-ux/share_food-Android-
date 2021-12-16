@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -54,6 +55,7 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     GoogleSignInClient mGoogleSignInClient;
+    TextView signUp;
     Context context;
     int showPassFlag = 0;
     int RC_SIGN_IN = 111;
@@ -72,6 +74,7 @@ public class Login extends AppCompatActivity {
         showPass = findViewById(R.id.showPass);
         loginGoogle = findViewById(R.id.loginGoogle);
         context = this;
+        signUp = findViewById(R.id.signUp);
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -80,6 +83,15 @@ public class Login extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toRegister = new Intent(Login.this,Register.class);
+                startActivity(toRegister);
+                finish();
+            }
+        });
 
         button.setOnClickListener(view -> {
             login();
@@ -208,4 +220,5 @@ public class Login extends AppCompatActivity {
         startActivity(toHome);
         finish();
     }
+
 }
