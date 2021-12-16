@@ -206,11 +206,8 @@ public class Home extends AppCompatActivity {
                         case R.id.nav_profile:
                             startActivity(new Intent(Home.this, Profile.class));
                             break;
-                        case R.id.nav_qrcode:
-                            //startActivity(new Intent(Home.this, createQRcode.class));
-                            break;
                         case R.id.nav_map:
-                            //startActivity(new Intent(Home.this, MapActivity.class));
+                            startActivity(new Intent(Home.this, Maps.class));
                             break;
                         case R.id.nav_logout:
                             startActivity(new Intent(Home.this, Welcome.class));
