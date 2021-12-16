@@ -1,6 +1,7 @@
 package com.abubakar.share_food;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FoodAdapter extends ArrayAdapter<Food> implements Filterable {
 
@@ -47,6 +52,8 @@ public class FoodAdapter extends ArrayAdapter<Food> implements Filterable {
         amountView.setText("Amount: " + currentFood.getAmount());
         TextView locationView = (TextView) listItemView.findViewById(R.id.location);
         locationView.setText("Location: " + currentFood.getFridge());
+        CircleImageView img = listItemView.findViewById(R.id.img);
+        Picasso.get().load(Id.getIp()+currentFood.getImg()).fit().centerCrop().into(img);
         return listItemView;
     }
 
@@ -71,9 +78,9 @@ public class FoodAdapter extends ArrayAdapter<Food> implements Filterable {
                     if ((mStringFilterList.get(i).getFridge().toUpperCase())
                             .contains(constraint.toString().toUpperCase())) {
 
-                        Food food = new Food(mStringFilterList.get(i).getName(), mStringFilterList.get(i).getAmount(),
+                        Food food = new Food(mStringFilterList.get(i).getId(),mStringFilterList.get(i).getName(), mStringFilterList.get(i).getAmount(),
                                 mStringFilterList.get(i).getDonor(), mStringFilterList.get(i).getRecipient(),
-                                mStringFilterList.get(i).getExpiryDate(), mStringFilterList.get(i).getFridge());
+                                mStringFilterList.get(i).getExpiryDate(), mStringFilterList.get(i).getFridge(), mStringFilterList.get(i).getImg());
                         filterList.add(food);
                     }
                 }

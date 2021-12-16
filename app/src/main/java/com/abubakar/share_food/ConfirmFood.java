@@ -17,7 +17,6 @@ public class ConfirmFood extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_food);
 
-
         Button home = findViewById(R.id.home);
         home.setOnClickListener(view -> {
             startActivity(new Intent(this, Home.class));
