@@ -7,7 +7,10 @@ Instructions:
     3. Install XAMPP, create a database and a table (screenshots are provided in the PHP_Files folder for guidance).
     4. Get your Google Maps API key from the google site and paste it in the Maps Activity.
     
-Screenshots:
 
 
+![Screenshot](screenshots/Screenshot_20211222-221340.jpg)
+![Screenshot](screenshots/Screenshot_20211216-184424.jpg)
+![Screenshot](screenshots/Screenshot_20211216-184410.jpg)
+![Screenshot](screenshots/Screenshot_20211214-233800.jpg)
   
